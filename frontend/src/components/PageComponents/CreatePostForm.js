@@ -5,7 +5,7 @@ import { BsArrowLeft } from 'react-icons/bs'
 import { FaAsterisk } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-
+import moment from 'moment'
 import { createPost } from '../../redux/actions/postsAction'
 import { countryDetailFn } from '../../redux/actions/countryAction'
 
@@ -34,7 +34,7 @@ const CreatePostForm = () => {
   const [tagsArr, setTagsArr] = useState([])
   // const [demoTagsArr, setDemoTagsArr] = useState([])
   const [tagsSearchValue, setTagsSearchValue] = useState('')
-  const [selectedPlan, setSelectedPlan] = useState([])
+  const [selectedPlan, setSelectedPlan] = useState('')
 
   useEffect(() => {
     if (countryList.length > 0) {
@@ -78,7 +78,7 @@ const CreatePostForm = () => {
       formData.append('description', values.description)
       formData.append('tags', JSON.stringify(tagsArr))
       formData.append('category', JSON.stringify(values.category))
-      formData.append('plan', JSON.stringify(values.plan))
+      formData.append('plan', JSON.stringify(new Date(values.plan)))
       if (values.country) {
         formData.append('country', selectedCountry)
         formData.append('countryCode', isoState)
@@ -106,7 +106,7 @@ const CreatePostForm = () => {
         description: values.description,
         tags: JSON.stringify(tagsArr),
         category: JSON.stringify(values.category),
-        plan: JSON.stringify(values.plan),
+        plan: JSON.stringify(new Date(values.plan)),
         country: selectedCountry,
         countryCode: isoState,
         price: freeState ? 0 : values.price,
@@ -595,27 +595,27 @@ const CreatePostForm = () => {
             onChange={(e) => setSelectedPlan(e)}
             options={[
               {
-                value: '1Month',
+                value: moment(new Date().setMonth(new Date().getMonth() + 1)).format('MMMM DD, YYYY'),
                 label: '1 Month/Free',
                 disabled: selectedPlan.length > 1 ? true : false,
               },
               {
-                value: '3month',
+                value: moment(new Date().setMonth(new Date().getMonth() + 3)).format('MMMM DD, YYYY'),
                 label: '3 Months/$9.33',
                 disabled: selectedPlan.length > 1 ? true : false,
               },
               {
-                value: '6Months',
+                value: moment(new Date().setMonth(new Date().getMonth() + 6)).format('MMMM DD, YYYY'),
                 label: '6 Months/$16.66',
                 disabled: selectedPlan.length > 1 ? true : false,
               },
               {
-                value: '1Year',
+                value: moment(new Date().setMonth(new Date().getMonth() + 12)).format('MMMM DD, YYYY'),
                 label: '1 Year/$24',
                 disabled: selectedPlan.length > 1 ? true : false,
               },
               {
-                value: '2Years',
+                value: moment(new Date().setMonth(new Date().getMonth() + 24)).format('MMMM DD, YYYY'),
                 label: '2 Years/$38',
                 disabled: selectedPlan.length > 1 ? true : false,
               },
