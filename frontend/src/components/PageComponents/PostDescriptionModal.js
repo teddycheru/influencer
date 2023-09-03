@@ -96,6 +96,9 @@ const PostDescriptionModal = ({ data, isModalOpen2, setIsModalOpen2 }) => {
                   <p className='time'>{data?.country}</p>
                   <div>
                     <p className='time'> Posted {moment(data?.createdAt).fromNow()}</p>
+                    <p className='time'> Posted {moment(data?.createdAt).fromNow()}</p>
+                    <p className='usr-name'>{singlePost?.plan}</p>
+                    
                   </div>
                 </div>
               </div>
