@@ -23,8 +23,7 @@ const postSchema = new Schema({
     maxLength: 2,
   },
   plan: {
-    type: [String],
-    maxLength: 2,
+    type: Date,
   },
   country: {
     type: String,
