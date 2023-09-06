@@ -595,9 +595,10 @@ const CreatePostForm = () => {
             onChange={(e) => setSelectedPlan(e)}
             options={[
               {
-                value: '1Month',
-                label: '1 Month/Free',
+                value: '2Month',
+                label: '1Month',
                 disabled: selectedPlan.length > 1 ? true : false,
+                dataText: "Heyy"
               },
               {
                 value: '3month',
