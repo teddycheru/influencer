@@ -70,8 +70,8 @@ const CreatePostForm = () => {
   const onFinish = async (values) => {
     setLoading(true)
     let data = {}
-    console.log('values', values)
-    console.log(checked)
+    // console.log('values', values)
+    // console.log(checked)
     if (fileList.length > 0) {
       formData.append('pictures', values.image.file.originFileObj)
       formData.append('title', values.title)
@@ -123,7 +123,7 @@ const CreatePostForm = () => {
         purchaseFirst: checked == 'yes' ? true : false,
         type: typeCheck !== null ? typeCheck : 'digital',
       }
-      console.log(data)
+      // console.log(data)
       dispatch(createPost({ data: data, navigate }))
     }
     setLoading(false)
@@ -718,7 +718,7 @@ const CreatePostForm = () => {
             {selectedPlan !== null && (
               moment(new Date().setDate(new Date().getDate() + 7)).format('MMMM DD, YYYY') === selectedPlan ||
                 moment(new Date().setMonth(new Date().getMonth() + 1)).format('MMMM DD, YYYY') === selectedPlan
-                ? 'Enlist for free'
+                ? 'Enlist'
                 : selectedPlan === moment(new Date().setMonth(new Date().getMonth() + 3)).format('MMMM DD, YYYY')
                   ? 'Enlist for $9.33'
                   : selectedPlan === moment(new Date().setMonth(new Date().getMonth() + 6)).format('MMMM DD, YYYY')
@@ -727,7 +727,7 @@ const CreatePostForm = () => {
                       ? 'Enlist for $24'
                       : selectedPlan === moment(new Date().setFullYear(new Date().getFullYear() + 2)).format('MMMM DD, YYYY')
                         ? 'Enlist for $38'
-                        : 'Pay and Enlist'
+                        : 'Enlist'
             )}
           </Button>
         </Form.Item>
