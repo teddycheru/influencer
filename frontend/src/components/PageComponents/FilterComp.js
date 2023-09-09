@@ -151,6 +151,11 @@ const FilterComp = ({
               disabled: categoryFilter?.length > 0 ? true : false,
             },
             {
+              value: 'AI',
+              label: 'AI',
+              disabled: categoryFilter?.length > 0 ? true : false,
+            },
+            {
               value: 'Automotive',
               label: 'Automotive',
               disabled: categoryFilter?.length > 0 ? true : false,
@@ -211,6 +216,16 @@ const FilterComp = ({
               disabled: categoryFilter?.length > 0 ? true : false,
             },
             {
+              value: 'Productivity',
+              label: 'Productivity',
+              disabled: categoryFilter?.length > 0 ? true : false,
+            },
+            {
+              value: 'Security',
+              label: 'Security',
+              disabled: categoryFilter?.length > 0 ? true : false,
+            },
+            {
               value: 'Software',
               label: 'Software',
               disabled: categoryFilter?.length > 0 ? true : false,
@@ -223,6 +238,11 @@ const FilterComp = ({
             {
               value: 'Tools & Accessories',
               label: 'Tools & Accessories',
+              disabled: categoryFilter?.length > 0 ? true : false,
+            },
+            {
+              value: 'Travel',
+              label: 'Travel',
               disabled: categoryFilter?.length > 0 ? true : false,
             },
             {

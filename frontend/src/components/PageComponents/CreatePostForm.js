@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Form, Upload, Input, Button, Select, Checkbox } from 'antd'
+import { Form, Upload, Input, Button, Select, Checkbox, Radio } from 'antd'
 import { PlusOutlined } from '@ant-design/icons'
 import { BsArrowLeft } from 'react-icons/bs'
 import { FaAsterisk } from 'react-icons/fa'
@@ -281,6 +281,11 @@ const CreatePostForm = () => {
                 disabled: selectedCategories.length > 1 ? true : false,
               },
               {
+                value: 'AI',
+                label: 'AI',
+                disabled: selectedCategories.length > 1 ? true : false,
+              },
+              {
                 value: 'Automotive',
                 label: 'Automotive',
                 disabled: selectedCategories.length > 1 ? true : false,
@@ -341,6 +346,16 @@ const CreatePostForm = () => {
                 disabled: selectedCategories.length > 1 ? true : false,
               },
               {
+                value: 'Productivity',
+                label: 'Productivity',
+                disabled: selectedCategories.length > 1 ? true : false,
+              },
+              {
+                value: 'Security',
+                label: 'Security',
+                disabled: selectedCategories.length > 1 ? true : false,
+              },
+              {
                 value: 'Software',
                 label: 'Software',
                 disabled: selectedCategories.length > 1 ? true : false,
@@ -353,6 +368,11 @@ const CreatePostForm = () => {
               {
                 value: 'Tools & Accessories',
                 label: 'Tools & Accessories',
+                disabled: selectedCategories.length > 1 ? true : false,
+              },
+              {
+                value: 'Travel',
+                label: 'Travel',
                 disabled: selectedCategories.length > 1 ? true : false,
               },
               {
@@ -577,53 +597,6 @@ const CreatePostForm = () => {
           </Select> */}
         </Form.Item>
         <Form.Item
-          name='plan'
-          label={
-            <div style={{ display: 'flex', alignItems: 'center', columnGap: '0.5rem' }}>
-              <FaAsterisk style={{ width: '5px', height: '5px', fill: 'red' }} />
-              Select Plan
-            </div>
-          }
-        >
-          <Select
-            mode=''
-            allowClear
-            style={{
-              width: '100%',
-            }}
-            placeholder='Select Plan'
-            onChange={(e) => setSelectedPlan(e)}
-            options={[
-              {
-                value: moment(new Date().setMonth(new Date().getMonth() + 1)).format('MMMM DD, YYYY'),
-                label: '1 Month/Free',
-                disabled: selectedPlan.length > 1 ? true : false,
-                dataText: "Heyy"
-              },
-              {
-                value: moment(new Date().setMonth(new Date().getMonth() + 3)).format('MMMM DD, YYYY'),
-                label: '3 Months/$9.33',
-                disabled: selectedPlan.length > 1 ? true : false,
-              },
-              {
-                value: moment(new Date().setMonth(new Date().getMonth() + 6)).format('MMMM DD, YYYY'),
-                label: '6 Months/$16.66',
-                disabled: selectedPlan.length > 1 ? true : false,
-              },
-              {
-                value: moment(new Date().setMonth(new Date().getMonth() + 12)).format('MMMM DD, YYYY'),
-                label: '1 Year/$24',
-                disabled: selectedPlan.length > 1 ? true : false,
-              },
-              {
-                value: moment(new Date().setMonth(new Date().getMonth() + 24)).format('MMMM DD, YYYY'),
-                label: '2 Years/$38',
-                disabled: selectedPlan.length > 1 ? true : false,
-              },
-            ]}
-          ></Select>
-        </Form.Item>
-        <Form.Item
           rules={[
             {
               // required: true,
@@ -691,7 +664,40 @@ const CreatePostForm = () => {
             No
           </Checkbox>
         </Form.Item>
-
+        <Form.Item
+          name='plan'
+          label={
+            <div style={{ display: 'flex', alignItems: 'center', columnGap: '0.5rem' }}>
+              <FaAsterisk style={{ width: '5px', height: '5px', fill: 'red' }} />
+              How long do you want this post to actively show up on our feed?
+            </div>
+          }
+          tooltip={`Select Plan`}
+        >
+          <Radio.Group
+            onChange={(e) => setSelectedPlan(e.target.value)}
+            value={selectedPlan}
+          >
+            <Radio style={{ border: '1px solid #d9d9d9', borderRadius: '20px', padding: '8px' }} value={moment(new Date().setDate(new Date().getDate() + 7)).format('MMMM DD, YYYY')} >
+              7 Days/Free
+            </Radio>
+            <Radio style={{ border: '1px solid #d9d9d9', borderRadius: '20px', padding: '8px' }} value={moment(new Date().setMonth(new Date().getMonth() + 1)).format('MMMM DD, YYYY')} >
+              1 Month/Free
+            </Radio>
+            <Radio style={{ border: '1px solid #d9d9d9', borderRadius: '20px', padding: '8px' }} value={moment(new Date().setMonth(new Date().getMonth() + 3)).format('MMMM DD, YYYY')} >
+              3 Months/$9.33
+            </Radio>
+            <Radio style={{ border: '1px solid #d9d9d9', borderRadius: '20px', padding: '8px' }} value={moment(new Date().setMonth(new Date().getMonth() + 6)).format('MMMM DD, YYYY')} >
+              6 Months/$16.66
+            </Radio>
+            <Radio style={{ border: '1px solid #d9d9d9', borderRadius: '20px', padding: '8px' }} value={moment(new Date().setMonth(new Date().getMonth() + 12)).format('MMMM DD, YYYY')} >
+              1 Year/$24
+            </Radio>
+            <Radio style={{ border: '1px solid #d9d9d9', borderRadius: '20px', padding: '8px' }} value={moment(new Date().setMonth(new Date().getMonth() + 24)).format('MMMM DD, YYYY')} >
+              2 Years/$38
+            </Radio>
+          </Radio.Group>
+        </Form.Item>
         <Form.Item>
           <Button
             loading={loading}
@@ -705,19 +711,31 @@ const CreatePostForm = () => {
                 (priceInput.length !== 0 || freeState !== false) &&
                 linkState.length !== 0 &&
                 typeCheck !== null &&
-                (typeReward || (typeCash && commissionValueState.length !== 0 ? true : false))
-                ? false
-                : true
+                (typeReward || (typeCash && commissionValueState.length !== 0 ? true : false)) &&
+                selectedPlan !== "" ? false : true
             }
           >
-            Enlist
+            {selectedPlan !== null && (
+              moment(new Date().setDate(new Date().getDate() + 7)).format('MMMM DD, YYYY') === selectedPlan ||
+                moment(new Date().setMonth(new Date().getMonth() + 1)).format('MMMM DD, YYYY') === selectedPlan
+                ? 'Enlist for free'
+                : selectedPlan === moment(new Date().setMonth(new Date().getMonth() + 3)).format('MMMM DD, YYYY')
+                  ? 'Enlist for $9.33'
+                  : selectedPlan === moment(new Date().setMonth(new Date().getMonth() + 6)).format('MMMM DD, YYYY')
+                    ? 'Enlist for $16.66'
+                    : selectedPlan === moment(new Date().setFullYear(new Date().getFullYear() + 1)).format('MMMM DD, YYYY')
+                      ? 'Enlist for $24'
+                      : selectedPlan === moment(new Date().setFullYear(new Date().getFullYear() + 2)).format('MMMM DD, YYYY')
+                        ? 'Enlist for $38'
+                        : 'Pay and Enlist'
+            )}
           </Button>
         </Form.Item>
         <div className='warning'>
           You cannot edit anything after enlisting. Please review everything before enlisting.
         </div>
       </Form>
-    </div>
+    </div >
   )
 }
 

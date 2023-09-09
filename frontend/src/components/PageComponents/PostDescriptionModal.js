@@ -15,7 +15,17 @@ const PostDescriptionModal = ({ data, isModalOpen2, setIsModalOpen2 }) => {
   const dispatch = useDispatch()
   const userProfileDetails = useSelector((state) => state.userReducer.user)
   const { singlePost, getPostLoading } = useSelector((state) => state.postReducer)
-
+  const currentDate = moment()
+  const expirationDate = moment(singlePost?.plan);
+  const daysUntilExpiration = expirationDate.diff(currentDate, 'days');
+  let expirationMessage;
+  if (daysUntilExpiration > 0) {
+    expirationMessage = `Will expire in ${daysUntilExpiration} days`;
+  } else if (daysUntilExpiration === 0) {
+    expirationMessage = 'Will expire today';
+  } else {
+    expirationMessage = 'Expired';
+  }
   // const [isModalOpen, setIsModalOpen] = useState(false)
   const [inputState, setInputState] = useState(null)
 
@@ -96,6 +106,7 @@ const PostDescriptionModal = ({ data, isModalOpen2, setIsModalOpen2 }) => {
                   <p className='time'>{data?.country}</p>
                   <div>
                     <p className='time'> Posted {moment(data?.createdAt).fromNow()}</p>
+                    <p className='usr-name'>{expirationMessage}</p>
                   </div>
                 </div>
               </div>
@@ -109,10 +120,10 @@ const PostDescriptionModal = ({ data, isModalOpen2, setIsModalOpen2 }) => {
                     ))}
                   </div>
                   <div className='tags-price'>
-                    <span>Price:</span><p className='parag'> ${singlePost?.price}</p>
+                    <span>Price:</span><p className='parag'> ${singlePost?.price || 0}</p>
                   </div>
                   <div className='tags-price'>
-                    <span>Commision:</span><p className='parag'>${singlePost?.comissionValue}</p>
+                    <span>Commision:</span><p className='parag'>${singlePost?.comissionValue || 0}</p>
                   </div>
                   <div className='tags-refer'>
                     <p className='parag'>

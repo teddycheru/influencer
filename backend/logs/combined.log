@@ -2579,3 +2579,8 @@
 {"date":"2023-09-03T20:16:34.604Z","level":"error","message":"user validation failed: role: `null` is not a valid enum value for path `role`.","method":"POST","service":"user-service","url":"/register"}
 {"date":"2023-09-03T20:44:06.335Z","level":"error","message":"Post not found","method":"GET","service":"user-service","url":"/fetch/64f4e73a9e12616ce5f5400b"}
 {"date":"2023-09-03T20:44:13.035Z","level":"error","message":"Post not found","method":"GET","service":"user-service","url":"/fetch/64f47d340448f07a7f90ce23"}
+{"date":"2023-09-08T19:30:24.732Z","level":"error","message":"Cannot read properties of null (reading '_id')","method":"GET","service":"user-service","url":"/profile/get"}
+{"date":"2023-09-08T19:42:20.918Z","level":"error","message":"Cannot read properties of null (reading '_id')","method":"GET","service":"user-service","url":"/profile/get"}
+{"date":"2023-09-08T19:42:20.931Z","level":"error","message":"Cannot read properties of null (reading '_id')","method":"GET","service":"user-service","url":"/profile/get"}
+{"date":"2023-09-08T19:42:58.967Z","level":"error","message":"user validation failed: role: `null` is not a valid enum value for path `role`.","method":"POST","service":"user-service","url":"/register"}
+{"date":"2023-09-08T21:46:14.896Z","level":"error","message":"Cannot read properties of null (reading '_id')","method":"GET","service":"user-service","url":"/profile/get"}

@@ -72,7 +72,7 @@ const Navbar = () => {
             <Avatar className='header-avatar' src={profileDetails?.profileImage} />
           </div>
         </Dropdown>
-        <i class="fa-solid fa-caret-down"></i>
+        <i className="fa-solid fa-caret-down"></i>
       </div>
     </div >
   )
