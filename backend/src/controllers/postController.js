@@ -72,20 +72,20 @@ const fetchPosts = async (req, res) => {
 
     const searchFilter = req.body.search
       ? {
-          $or: [
-            {
-              title: {
-                $regex: req.body.search,
-                $options: "i",
-              },
+        $or: [
+          {
+            title: {
+              $regex: req.body.search,
+              $options: "i",
             },
-            {
-              tags: {
-                $in: [req.body.search],
-              },
+          },
+          {
+            tags: {
+              $in: [req.body.search],
             },
-          ],
-        }
+          },
+        ],
+      }
       : {};
     // const searchFilter = req.body.search
     //   ? {
@@ -106,72 +106,72 @@ const fetchPosts = async (req, res) => {
 
     const categoryFilter = req.body.category
       ? {
-          category: {
-            $in: req.body.category,
-          },
-        }
+        category: {
+          $in: req.body.category,
+        },
+      }
       : {};
 
     const planFilter = req.body.plan
-    ? {
+      ? {
         plan: {
           $in: req.body.plan,
         },
       }
-    : {};
+      : {};
 
     const countryFilter = req.body.country
       ? {
-          country: {
-            $regex: req.body.country,
-            $options: "i",
-          },
-        }
+        country: {
+          $regex: req.body.country,
+          $options: "i",
+        },
+      }
       : {};
 
     const comissionFilter = req.body.comission
       ? {
         comission: [req.body.comission],
-          // comission: {
-          //   $in: [req.body.comission],
-          // },
-        }
+        // comission: {
+        //   $in: [req.body.comission],
+        // },
+      }
       : {};
 
     const typeFilter = req.body.type
       ? {
-          type: req.body.type,
-        }
+        type: req.body.type,
+      }
       : {};
 
     const purchaseFirstFilter =
       String(req.body.purchaseFirst) !== ""
         ? {
-            purchaseFirst: Boolean(req.body.purchaseFirst),
-          }
+          purchaseFirst: Boolean(req.body.purchaseFirst),
+        }
         : {};
 
     console.log("purchaseFirstFilter", purchaseFirstFilter);
 
     const priceRangeFilter =
       req.body.priceRange &&
-      req.body.priceRange.length == 2 &&
-      req.body.priceRange[0] !== 0 &&
-      req.body.priceRange[1] !== 0
+        req.body.priceRange.length == 2 &&
+        req.body.priceRange[0] !== 0 &&
+        req.body.priceRange[1] !== 0
         ? {
-            price: {
-              $gte: req.body.priceRange[0],
-              $lte: req.body.priceRange[1],
-            },
-          }
+          price: {
+            $gte: req.body.priceRange[0],
+            $lte: req.body.priceRange[1],
+          },
+        }
         : {};
 
     // const reportIds = await Report.find({ user: user?._id }).distinct("_id");
 
     const reportFilter = false
       ? {
-          reports: { $nin: reportIds },
-        }
+        reports: { $nin: reportIds },
+      }
       : {};
 
     const total = await Post.find({
@@ -243,6 +243,15 @@ const fetchPosts = async (req, res) => {
     //   await livePosts.select("-likes");
     //   await expiredPosts.select("-likes");
     // }
+    const currentDate = new Date();
+    for (const post of livePosts) {
+      const expirationDate = post.plan;
+      if (currentDate >= expirationDate) {
+        post.expired = true;
+        // post.isActive = false
+        await post.save();
+      }
+    }
     return SuccessHandler(
       {
         livePosts,
@@ -400,22 +409,21 @@ const fetchMyPosts = async (req, res) => {
     const user = req.user;
     const userFilter = user?._id
       ? {
-          user: user?._id,
-        }
+        user: user?._id,
+      }
       : {};
-
     const favFilter = user?._id
       ? {
-          likes: { $in: user?._id },
-        }
+        likes: { $in: user?._id },
+      }
       : {};
 
     const reportIds = await Report.find({ user: user?._id }).distinct("_id");
 
     const reportFilter = user?._id
       ? {
-          reports: { $in: reportIds },
-        }
+        reports: { $in: reportIds },
+      }
       : {};
     // const searchFilter = req.body.search
     //   ? {

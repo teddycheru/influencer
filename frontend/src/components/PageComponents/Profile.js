@@ -13,7 +13,7 @@ const Profile = () => {
   // const [userProfile, setUserProfile] = useState()
 
   useEffect(() => {
-    ;(async () => {
+    ; (async () => {
       await dispatch(profileDetails())
     })()
   }, [])
@@ -98,7 +98,7 @@ const Profile = () => {
           <h2>Profile Details</h2>
           <Form.Item name='image' label='Image'>
             <Upload
-              customRequest={() => {}}
+              customRequest={() => { }}
               listType='picture-circle'
               fileList={fileList}
               onChange={uploadHandleChange}
@@ -131,7 +131,7 @@ const Profile = () => {
             <Input
               autoComplete='off'
               placeholder='Enter Email'
-              // defaultValue={userProfile?.businessLink}
+            // defaultValue={userProfile?.businessLink}
             />
           </Form.Item>
           <Form.Item name='payment' label='Payment-method'>
