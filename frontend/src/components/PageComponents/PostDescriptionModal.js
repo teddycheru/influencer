@@ -82,7 +82,7 @@ const PostDescriptionModal = ({ data, isModalOpen2, setIsModalOpen2 }) => {
                   <Avatar className='post-user-img' src={singlePost?.image} />
                   <div className='post-title'>
                     <h1 className='title'>{singlePost?.title}</h1>
-                    <p className='usr-name'>{singlePost?.user?.username}</p>
+                    <p className='usr-name'>{singlePost?.user?.name}</p>
                   </div>
                 </div>
                 <div className='country'>

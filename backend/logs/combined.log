@@ -2584,3 +2584,4 @@
 {"date":"2023-09-08T19:42:20.931Z","level":"error","message":"Cannot read properties of null (reading '_id')","method":"GET","service":"user-service","url":"/profile/get"}
 {"date":"2023-09-08T19:42:58.967Z","level":"error","message":"user validation failed: role: `null` is not a valid enum value for path `role`.","method":"POST","service":"user-service","url":"/register"}
 {"date":"2023-09-08T21:46:14.896Z","level":"error","message":"Cannot read properties of null (reading '_id')","method":"GET","service":"user-service","url":"/profile/get"}
+{"date":"2023-09-11T19:22:47.584Z","level":"error","message":"user validation failed: role: `null` is not a valid enum value for path `role`.","method":"POST","service":"user-service","url":"/register"}
