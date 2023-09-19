@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Form, Input, Button, Upload, Checkbox } from 'antd'
+import { Link } from 'react-router-dom';
 import { PlusOutlined } from '@ant-design/icons'
 import { useDispatch, useSelector } from 'react-redux'
 import { profileDetails, updateProfile } from '../../redux/actions/userActions'
@@ -113,7 +114,7 @@ const Profile = () => {
             <Input
               autoComplete='off'
               placeholder='Enter Email'
-              // defaultValue={userProfile?.email}
+              // defaultValue={userProfileDetails?.email}
               disabled={true}
             />
           </Form.Item>
@@ -154,6 +155,9 @@ const Profile = () => {
             </Button>
           </Form.Item>
         </Form>
+        <Link to="/change-password">
+          <Button type="primary">Change Password</Button>
+        </Link>
       </div>
     </div>
   )

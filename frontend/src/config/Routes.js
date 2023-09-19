@@ -15,7 +15,7 @@ import PrivateWrapper from './PrivateRoutes'
 import ScrollToTop from './ScrollToTop'
 import Faq from '../pages/LandingPageCom/Faq'
 import MyLanding from '../pages/LandingPageCom/LandingPage'
-
+import PasswordUpdatePage from '../components/PageComponents/PasswordUpdate';
 const Routers = () => {
   return (
     <BrowserRouter>
@@ -26,6 +26,7 @@ const Routers = () => {
           <Route path='/create-post' element={<CreatePostPage />} />
           <Route path='/account-details' element={<Account />} />
           <Route path='/setting' element={<Settings />} />
+          <Route path="/change-password" element={<PasswordUpdatePage />} />
         </Route>
         <Route path='/' element={<MyLanding />} />
         <Route path='/login' element={<Login />} />

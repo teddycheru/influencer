@@ -1,6 +1,9 @@
 const ErrorHandler = require("../utils/ErrorHandler");
 const SuccessHandler = require("../utils/SuccessHandler");
 const User = require("../models/User/user");
+const bcrypt = require('bcrypt');
+const { validationResult } = require('express-validator');
+
 
 const updateProfile = async (req, res) => {
   // #swagger.tags = ['user']
@@ -11,18 +14,18 @@ const updateProfile = async (req, res) => {
       $set:
         req.awsImages?.length > 0
           ? {
-              name,
-              profileImage: req.awsImages?.[0],
-              bio,
-              businessLink,
-              blockAds,
-            }
+            name,
+            profileImage: req.awsImages?.[0],
+            bio,
+            businessLink,
+            blockAds,
+          }
           : {
-              name,
-              bio,
-              businessLink,
-              blockAds,
-            },
+            name,
+            bio,
+            businessLink,
+            blockAds,
+          },
     });
     if (!updated) {
       return ErrorHandler("User does not exist", 400, req, res);
@@ -66,5 +69,29 @@ const makePremium = async (req, res) => {
     return ErrorHandler(error.message, 500, req, res);
   }
 };
+const updatePassword = async (req, res) => {
+  try {
+    const { currentPassword, newPassword } = req.body;
+    const { userId } = req.user;
 
-module.exports = { updateProfile, getProfile, makePremium };
+    // Retrieve the user from the database
+    const user = await User.findById(userId);
+
+    // Check if the current password matches the user's saved password
+    const isMatch = await user.comparePassword(currentPassword);
+    if (!isMatch) {
+      return res.status(400).json({ message: "Incorrect current password" });
+    }
+
+    // Update the user's password
+    user.password = newPassword;
+    await user.save();
+
+    return res.status(200).json({ message: "Password updated successfully" });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Server Error" });
+  }
+};
+
+module.exports = { updateProfile, getProfile, makePremium, updatePassword };

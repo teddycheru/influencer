@@ -149,7 +149,11 @@ const CreatePostForm = () => {
       </div>
       <Form name='post' className='post-form' layout='vertical' onFinish={onFinish}>
         <div className='heading-container'>
-          <h2>Enlist a Program</h2>
+          <div style={{ display: "flex", flexDirection: "column", alignItems: 'center', }}>
+            <h2>Enlist a Program</h2>
+            <p style={{ width: '600px', textAlign: 'center' }}>You may enlist multiple programs if you have different types of offers or items within your business. But beware that intentionally abusing our service will lead to an IP ban. Please follow our terms and conditions.
+            </p>
+          </div>
         </div>
 
         <div className='form-item-container-one'>
@@ -392,7 +396,7 @@ const CreatePostForm = () => {
         <Form.Item
           name='country'
           label='Country'
-          tooltip='Choose a country if this cannot be consumed worldwide, or leave it blank.'
+          tooltip='Choose a country if the consumer base is heavily targeted within that country. Otherwise, leave it to default.'
         >
           <Select
             defaultValue={'global'}
@@ -609,12 +613,12 @@ const CreatePostForm = () => {
               Link
             </div>
           }
-          tooltip={`Enter the direct link to your affiliate/referral program. Make sure people don't get confused.`}
+          tooltip={`Enter the direct link to your affiliate/referral program. Please do not use any link shortener.`}
         >
           <Input
             value={linkState}
             onChange={(e) => setLinkState(e.target.value)}
-            placeholder='Affiliate Program Link...'
+            placeholder='Direct Link to the Program'
           />
         </Form.Item>
 
@@ -672,7 +676,7 @@ const CreatePostForm = () => {
               How long do you want this post to actively show up on our feed?
             </div>
           }
-          tooltip={`Select Plan`}
+          tooltip={`After the selected period, the post will expire. This means people won't find it here anymore, as it will be deleted from our site. You can always come back and enlist it again.`}
         >
           <Radio.Group
             onChange={(e) => setSelectedPlan(e.target.value)}
@@ -732,7 +736,7 @@ const CreatePostForm = () => {
           </Button>
         </Form.Item>
         <div className='warning'>
-          You cannot edit anything after enlisting. Please review everything before enlisting.
+          You cannot edit anything after enlisting. Please review everything beforehand.
         </div>
       </Form>
     </div >
