@@ -217,7 +217,6 @@ const updatePassword = async (req, res) => {
     ) {
       return ErrorHandler(
         "Password must be 6 characters long",
-
         // "Password must contain at least 8 characters, 1 uppercase, 1 lowercase, 1 number and 1 special character",
         400,
         req,

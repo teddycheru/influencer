@@ -149,15 +149,15 @@ const Profile = () => {
               </Checkbox>
             </Form.Item>
           )}
-          <Form.Item>
+          <Form.Item style={{ display: 'flex' }}>
             <Button loading={loading} type='primary' htmlType='submit'>
               Update
             </Button>
+            <Link to="/change-password" style={{ marginLeft: '10px' }}>
+              <Button type="primary">Change Password</Button>
+            </Link>
           </Form.Item>
         </Form>
-        <Link to="/change-password">
-          <Button type="primary">Change Password</Button>
-        </Link>
       </div>
     </div>
   )

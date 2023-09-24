@@ -1,7 +1,9 @@
 import { notification } from 'antd'
 import { attachToken, privateAPI } from '../../config/constants'
-import { GET_USER_PROFILE } from '../types/generalTypes'
+import { GET_USER_PROFILE, UPDATE_PASSWORD_SUCCESS, UPDATE_PASSWORD_FAIL } from '../types/generalTypes'
 import axios from 'axios'
+
+
 // export const profileDetails = (setUserProfile) => {
 export const profileDetails = () => {
   return async (dispatch) => {
@@ -44,31 +46,32 @@ export const updateProfile = (payload) => {
 }
 
 export const updatePassword = (currentPassword, newPassword) => {
-  console.log(currentPassword)
-  console.log(newPassword)
-  return async () => {
+  return async (dispatch) => {
     try {
       const response = await privateAPI.post('/user/password/update', {
         currentPassword,
         newPassword,
       });
 
-      // Check the response status
       if (response.status === 200) {
-        // Password updated successfully
+        dispatch({
+          type: UPDATE_PASSWORD_SUCCESS,
+          payload: 'Password updated successfully',
+        });
+
         notification.success({
           message: 'Password updated successfully',
           duration: 3,
         });
       } else {
-        // Show error message if password update failed
-        notification.error({
-          message: response?.data?.message || 'Password update failed',
-          duration: 3,
-        });
+        throw new Error(response?.data?.message || 'Password update failed');
       }
     } catch (error) {
-      console.error(error);
+      dispatch({
+        type: UPDATE_PASSWORD_FAIL,
+        payload: error?.response?.data?.message || 'Server Error',
+      });
+
       notification.error({
         message: error?.response?.data?.message || 'Server Error',
         duration: 3,

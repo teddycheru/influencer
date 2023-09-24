@@ -179,3 +179,39 @@
 {"date":"2023-09-14T23:41:48.476Z","level":"error","message":"Invalid status code: IncomingMessage {\n  _readableState: [ReadableState],\n  _events: [Object: null prototype] {},\n  _eventsCount: 0,\n  _maxListeners: undefined,\n  socket: [Socket],\n  httpVersionMajor: 1,\n  httpVersionMinor: 1,\n  httpVersion: '1.1',\n  complete: true,\n  rawHeaders: [Array],\n  rawTrailers: [],\n  joinDuplicateHeaders: undefined,\n  aborted: false,\n  upgrade: false,\n  url: '/login',\n  method: 'POST',\n  statusCode: null,\n  statusMessage: null,\n  client: [Socket],\n  _consuming: true,\n  _dumped: false,\n  next: [Function: next],\n  baseUrl: '/auth',\n  originalUrl: '/auth/login',\n  _parsedUrl: [Url],\n  params: {},\n  query: {},\n  res: [ServerResponse],\n  body: [Object],\n  _body: true,\n  length: undefined,\n  route: [Route],\n  [Symbol(kCapture)]: false,\n  [Symbol(kHeaders)]: [Object],\n  [Symbol(kHeadersCount)]: 32,\n  [Symbol(kTrailers)]: null,\n  [Symbol(kTrailersCount)]: 0\n}","method":"POST","service":"user-service","url":"/login"}
 {"date":"2023-09-14T23:45:18.635Z","level":"error","message":"Invalid credentials","method":"POST","service":"user-service","url":"/login"}
 {"date":"2023-09-14T23:50:23.418Z","level":"error","message":"Invalid credentials","method":"POST","service":"user-service","url":"/login"}
+{"date":"2023-09-24T08:17:40.434Z","level":"error","message":"Invalid credentials","method":"POST","service":"user-service","url":"/login"}
+{"date":"2023-09-24T08:17:49.641Z","level":"error","message":"Invalid credentials","method":"POST","service":"user-service","url":"/login"}
+{"date":"2023-09-24T08:18:09.334Z","level":"error","message":"Invalid credentials","method":"POST","service":"user-service","url":"/login"}
+{"date":"2023-09-24T08:18:46.462Z","level":"error","message":"user validation failed: role: `null` is not a valid enum value for path `role`.","method":"POST","service":"user-service","url":"/register"}
+{"date":"2023-09-24T08:20:07.348Z","level":"error","message":"Invalid credentials","method":"POST","service":"user-service","url":"/login"}
+{"date":"2023-09-24T08:20:16.264Z","level":"error","message":"Invalid credentials","method":"POST","service":"user-service","url":"/login"}
+{"date":"2023-09-24T08:21:15.279Z","level":"error","message":"Invalid credentials","method":"POST","service":"user-service","url":"/login"}
+{"date":"2023-09-24T08:21:22.057Z","level":"error","message":"Invalid credentials","method":"POST","service":"user-service","url":"/login"}
+{"date":"2023-09-24T08:27:25.614Z","level":"error","message":"Invalid credentials","method":"POST","service":"user-service","url":"/login"}
+{"date":"2023-09-24T08:27:37.862Z","level":"error","message":"Invalid credentials","method":"POST","service":"user-service","url":"/login"}
+{"date":"2023-09-24T08:27:55.813Z","level":"error","message":"Invalid credentials","method":"POST","service":"user-service","url":"/login"}
+{"date":"2023-09-24T08:27:57.011Z","level":"error","message":"Invalid credentials","method":"POST","service":"user-service","url":"/login"}
+{"date":"2023-09-24T08:27:57.342Z","level":"error","message":"Invalid credentials","method":"POST","service":"user-service","url":"/login"}
+{"date":"2023-09-24T08:28:06.807Z","level":"error","message":"Invalid credentials","method":"POST","service":"user-service","url":"/login"}
+{"date":"2023-09-24T08:31:08.027Z","level":"error","message":"Invalid credentials","method":"POST","service":"user-service","url":"/login"}
+{"date":"2023-09-24T19:41:40.446Z","level":"error","message":"Invalid credentials","method":"POST","service":"user-service","url":"/login"}
+{"date":"2023-09-24T19:42:25.335Z","level":"error","message":"User already exists","method":"POST","service":"user-service","url":"/register"}
+{"date":"2023-09-24T19:54:33.031Z","level":"error","message":"Invalid credentials","method":"POST","service":"user-service","url":"/login"}
+{"date":"2023-09-24T19:54:37.147Z","level":"error","message":"Invalid credentials","method":"POST","service":"user-service","url":"/login"}
+{"date":"2023-09-24T19:55:06.505Z","level":"error","message":"Invalid credentials","method":"POST","service":"user-service","url":"/login"}
+{"date":"2023-09-24T19:55:27.702Z","level":"error","message":"Password must be 6 characters long","method":"POST","service":"user-service","url":"/register"}
+{"date":"2023-09-24T20:05:08.263Z","level":"error","message":"bcrypt is not defined","method":"POST","service":"user-service","url":"/register"}
+{"date":"2023-09-24T20:06:16.715Z","level":"error","message":"Invalid credentials","method":"POST","service":"user-service","url":"/login"}
+{"date":"2023-09-24T20:11:15.578Z","level":"error","message":"compare is not defined","method":"POST","service":"user-service","url":"/login"}
+{"date":"2023-09-24T20:12:37.137Z","level":"error","message":"Invalid credentials","method":"POST","service":"user-service","url":"/login"}
+{"date":"2023-09-24T20:13:06.521Z","level":"error","message":"user validation failed: role: `null` is not a valid enum value for path `role`.","method":"POST","service":"user-service","url":"/register"}
+{"date":"2023-09-24T20:15:21.347Z","level":"error","message":"Invalid credentials","method":"POST","service":"user-service","url":"/login"}
+{"date":"2023-09-24T20:16:00.458Z","level":"error","message":"Invalid credentials","method":"POST","service":"user-service","url":"/login"}
+{"date":"2023-09-24T20:16:41.482Z","level":"error","message":"Invalid credentials","method":"POST","service":"user-service","url":"/login"}
+{"date":"2023-09-24T20:17:37.282Z","level":"error","message":"bcrypt is not defined","method":"POST","service":"user-service","url":"/register"}
+{"date":"2023-09-24T20:24:09.941Z","level":"error","message":"User does not exist","service":"user-service"}
+{"date":"2023-09-24T20:24:09.957Z","level":"error","message":"Invalid status code: IncomingMessage {\n  _readableState: [ReadableState],\n  _events: [Object: null prototype] {},\n  _eventsCount: 0,\n  _maxListeners: undefined,\n  socket: [Socket],\n  httpVersionMajor: 1,\n  httpVersionMinor: 1,\n  httpVersion: '1.1',\n  complete: true,\n  rawHeaders: [Array],\n  rawTrailers: [],\n  joinDuplicateHeaders: undefined,\n  aborted: false,\n  upgrade: false,\n  url: '/login',\n  method: 'POST',\n  statusCode: null,\n  statusMessage: null,\n  client: [Socket],\n  _consuming: true,\n  _dumped: false,\n  next: [Function: next],\n  baseUrl: '/auth',\n  originalUrl: '/auth/login',\n  _parsedUrl: [Url],\n  params: {},\n  query: {},\n  res: [ServerResponse],\n  body: [Object],\n  _body: true,\n  length: undefined,\n  route: [Route],\n  [Symbol(kCapture)]: false,\n  [Symbol(kHeaders)]: [Object],\n  [Symbol(kHeadersCount)]: 32,\n  [Symbol(kTrailers)]: null,\n  [Symbol(kTrailersCount)]: 0\n}","method":"POST","service":"user-service","url":"/login"}
+{"date":"2023-09-24T20:59:16.592Z","level":"error","message":"password is not defined","method":"POST","service":"user-service","url":"/password/update"}
+{"date":"2023-09-24T21:00:22.668Z","level":"error","message":"Invalid credentials","method":"POST","service":"user-service","url":"/password/update"}
+{"date":"2023-09-24T21:01:34.025Z","level":"error","message":"Invalid credentials","method":"POST","service":"user-service","url":"/login"}
+{"date":"2023-09-24T21:06:12.882Z","level":"error","message":"Invalid credentials","method":"POST","service":"user-service","url":"/password/update"}
