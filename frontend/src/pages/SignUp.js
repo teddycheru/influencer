@@ -21,7 +21,10 @@ const SignUp = ({ setTabKey }) => {
   }
 
   useEffect(() => console.log(userNameState), [userNameState])
-
+  const userRole = localStorage.getItem('userRole');
+  if (!userRole) {
+    localStorage.setItem('userRole', 'influencer');
+  }
   // if (localStorage.hasOwnProperty("token")) {
   //   // return <Navigate replace to="/home" />;
   // } else {
@@ -33,6 +36,7 @@ const SignUp = ({ setTabKey }) => {
           <img src={Logo} />
           <h2>Create New Account</h2>
         </div>
+
         <Form.Item
           name='name'
           rules={[

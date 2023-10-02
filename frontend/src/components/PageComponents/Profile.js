@@ -44,12 +44,13 @@ const Profile = () => {
       formData.append('pictures', userProfileDetails?.profileImage)
     }
     // formData.append('userImage', values.image.file.originFileObj)
-    formData.append('name', values.name)
+    formData.append('username', values.username)
     formData.append('bio', values.bio)
     formData.append('businessLink', values.link)
     formData.append('blockAds', userProfileDetails?.premium ? blockAdState : false)
     dispatch(updateProfile(formData))
     setLoading(false)
+    console.log("formdata", formData)
   }
 
   const uploadButton = (
@@ -75,8 +76,8 @@ const Profile = () => {
           onFinish={onFinish}
           fields={[
             {
-              name: 'name',
-              value: userProfileDetails?.name,
+              name: 'username',
+              value: userProfileDetails?.username,
             },
             {
               name: 'email',
@@ -97,7 +98,7 @@ const Profile = () => {
           ]}
         >
           <h2>Profile Details</h2>
-          <Form.Item name='image' label='Image'>
+          <Form.Item name='image' label=''>
             <Upload
               customRequest={() => { }}
               listType='picture-circle'
@@ -107,34 +108,45 @@ const Profile = () => {
               {fileList?.length > 0 ? null : uploadButton}
             </Upload>
           </Form.Item>
-          <Form.Item name='name' label='Name'>
-            <Input autoComplete='off' placeholder='Enter Name' />
+          <Form.Item name='username' label='Username'>
+            <Input autoComplete='off' placeholder='Enter Username' />
           </Form.Item>
           <Form.Item name='email' label='Email'>
             <Input
               autoComplete='off'
               placeholder='Enter Email'
-              // defaultValue={userProfileDetails?.email}
-              disabled={true}
+            // defaultValue={userProfileDetails?.email}
+            // disabled={true}
             />
           </Form.Item>
+          <Link to="/change-password" >
+            <Button type="primary" style={{ marginTop: '0px', marginBottom: '20px' }}>Change Password</Button>
+          </Link>
           <Form.Item name='bio' label='Bio'>
             <Input.TextArea
               rows={4}
               autoComplete='off'
               className='custom-text-area'
-              placeholder='Bio ...'
+              placeholder='Write about yourself or your Business...'
               style={{ height: 'auto !important', resize: 'none' }}
             />
             {/* <textarea className='custom-text-area' placeholder='Bio ...' /> */}
           </Form.Item>
-          <Form.Item name='link' label='Business Link'>
+          <Form.Item name='link' label='Link'>
             <Input
               autoComplete='off'
-              placeholder='Enter Email'
+              placeholder='Enter your business/profile link'
             // defaultValue={userProfile?.businessLink}
             />
           </Form.Item>
+          <Form.Item name='varification' label='Request for Verification'>
+            <Button
+              autoComplete='off'
+              placeholder='Enter your business/profile link'
+              disabled={true}
+            >Currently Unavailable</Button>
+          </Form.Item>
+
           <Form.Item name='payment' label='Payment-method'>
             <div className='payment-container'>
               <Button className='premium-btn' disabled={true}>
@@ -153,9 +165,6 @@ const Profile = () => {
             <Button loading={loading} type='primary' htmlType='submit'>
               Update
             </Button>
-            <Link to="/change-password" style={{ marginLeft: '10px' }}>
-              <Button type="primary">Change Password</Button>
-            </Link>
           </Form.Item>
         </Form>
       </div>

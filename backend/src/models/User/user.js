@@ -32,7 +32,7 @@ const userSchema = new Schema({
   role: {
     type: String,
     enum: ["business", "influencer"],
-    // default: "user",
+    default: "influencer",
   },
   createdAt: {
     type: Date,

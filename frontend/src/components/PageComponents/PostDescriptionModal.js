@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Avatar, Input, Modal, Typography, Spin, Button } from 'antd'
+import { Avatar, Input, Modal, Typography, Spin, Button, Checkbox } from 'antd'
 import { AiOutlineClose } from 'react-icons/ai'
 import { FaRegTrashAlt } from 'react-icons/fa'
 import { useDispatch, useSelector } from 'react-redux'
@@ -7,11 +7,16 @@ import moment from 'moment/moment'
 import earth from '../../assets/earth2.png'
 import { BsHeart, BsFillHeartFill, BsFlag } from 'react-icons/bs'
 import { postReact } from '../../redux/actions/postsAction'
-
+import { reportPost } from '../../redux/actions/postsAction';
 // import { addComment, fetchSinglePost } from '../../redux/actions/postsAction'
 import { addComment, deleteComment } from '../../redux/actions/postsAction'
 
 const PostDescriptionModal = ({ data, isModalOpen2, setIsModalOpen2 }) => {
+  const showReportModal = () => {
+    setIsReportModalOpen(true);
+  }
+  const [isReportModalOpen, setIsReportModalOpen] = useState(false);
+  const [reportCheck, setReportCheck] = useState('');
   const dispatch = useDispatch()
   const userProfileDetails = useSelector((state) => state.userReducer.user)
   const { singlePost, getPostLoading } = useSelector((state) => state.postReducer)
@@ -50,6 +55,127 @@ const PostDescriptionModal = ({ data, isModalOpen2, setIsModalOpen2 }) => {
 
   return (
     <>
+      <Modal
+        title={`Report ${data?.title}`}
+        footer={false}
+        centered
+        open={isReportModalOpen}
+        onOk={() => setIsReportModalOpen(false)}
+        onCancel={() => setIsReportModalOpen(false)}
+      >
+        <div className='report-modal'>
+          <div className='report-sec'>
+            <Checkbox
+              checked={reportCheck == 'expired' ? true : false}
+              onChange={() => {
+                if (reportCheck !== 'expired') {
+                  setReportCheck('expired')
+                } else if (reportCheck == 'expired') {
+                  setReportCheck('')
+                }
+              }}
+            >
+              Expired
+            </Checkbox>
+            <Checkbox
+              checked={reportCheck == 'scam' ? true : false}
+              onChange={() => {
+                if (reportCheck !== 'scam') {
+                  setReportCheck('scam')
+                } else if (reportCheck == 'scam') {
+                  setReportCheck('')
+                }
+              }}
+            >
+              Scam
+            </Checkbox>
+            <Checkbox
+              checked={reportCheck == 'spam' ? true : false}
+              onChange={() => {
+                if (reportCheck !== 'spam') {
+                  setReportCheck('spam')
+                } else if (reportCheck == 'spam') {
+                  setReportCheck('')
+                }
+              }}
+            >
+              Spam
+            </Checkbox>
+            <Checkbox
+              checked={reportCheck == 'inappropriate' ? true : false}
+              onChange={() => {
+                if (reportCheck !== 'inappropriate') {
+                  setReportCheck('inappropriate')
+                } else if (reportCheck == 'inappropriate') {
+                  setReportCheck('')
+                }
+              }}
+            >
+              Inappropriate
+            </Checkbox>
+            <Checkbox
+              checked={reportCheck == 'scam' ? true : false}
+              onChange={() => {
+                if (reportCheck !== 'scam') {
+                  setReportCheck('scam')
+                } else if (reportCheck == 'scam') {
+                  setReportCheck('')
+                }
+              }}
+            >
+              Infringes Rights
+            </Checkbox>
+            <Checkbox
+              checked={reportCheck == 'identical' ? true : false}
+              onChange={() => {
+                if (reportCheck !== 'identical') {
+                  setReportCheck('identical')
+                } else if (reportCheck == 'identical') {
+                  setReportCheck('')
+                }
+              }}
+            >
+              Identical
+            </Checkbox>
+
+            <Checkbox
+              checked={reportCheck == 'vague' ? true : false}
+              onChange={() => {
+                if (reportCheck !== 'vague') {
+                  setReportCheck('vague')
+                } else if (reportCheck == 'vague') {
+                  setReportCheck('')
+                }
+              }}
+            >
+              Vague
+            </Checkbox>
+            <Checkbox
+              checked={reportCheck == 'something' ? true : false}
+              onChange={() => {
+                if (reportCheck !== 'something') {
+                  setReportCheck('something')
+                } else if (reportCheck == 'something') {
+                  setReportCheck('')
+                }
+              }}
+            >
+              Something Else
+            </Checkbox>
+          </div>
+          <div className='bottom-container'>
+            <Button
+              className='report-btn'
+              disabled={reportCheck == '' ? true : false}
+              onClick={() => {
+                dispatch(reportPost({ text: reportCheck, postId: data?._id }, setIsReportModalOpen))
+              }}
+            >
+              Report
+            </Button>
+          </div>
+        </div>
+      </Modal>
       {/* <Button onClick={showModal} className='post-modal-show-btn'>
         View Post
       </Button> */}
@@ -101,7 +227,7 @@ const PostDescriptionModal = ({ data, isModalOpen2, setIsModalOpen2 }) => {
                         height: data?.countryCode == undefined && '20px',
                       }}
                     />
-                    <BsFlag style={{ fill: '#ff9c6e', cursor: 'pointer', marginLeft: '30px', fontSize: '30px' }} />
+                    <BsFlag style={{ fill: '#ff9c6e', cursor: 'pointer', marginLeft: '30px', fontSize: '30px' }} onClick={showReportModal} />
                   </div>
                   <p className='time'>{data?.country}</p>
                   <div>

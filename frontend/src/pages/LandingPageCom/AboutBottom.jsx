@@ -16,12 +16,12 @@ function AboutBottom() {
                 <a href='#' className='follow-us'>BLOG POSTS</a>
                 <a href='#' className='follow-us'>FOLLOW US</a>
                 <div className='icons'>
-                    <a href="#" className='footer-icons'><i className="fab fa-facebook-f"></i></a>
-                    <a href="#" className='footer-icons'><i className="fab fa-twitter"></i></a>
-                    <a href="#" className='footer-icons'><i className="fab fa-instagram"></i></a>
-                    <a href="#" className='footer-icons'><i className="fab fa-pinterest"></i></a>
-                    <a href="#" className='footer-icons'><i className="fab fa-youtube"></i></a>
-                    <a href="#" className='footer-icons'><i className="fab fa-linkedin"></i></a>
+                    <a href="#" className='footer-icons' target='_blank'><i className="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com/AffiliatedRefer" target='_blank' className='footer-icons'><i className="fab fa-x"></i></a>
+                    <a href="#" className='footer-icons' target='_blank'><i className="fab fa-instagram"></i></a>
+                    <a href="#" className='footer-icons' target='_blank'><i className="fab fa-pinterest"></i></a>
+                    <a href="#" className='footer-icons' target='_blank'><i className="fab fa-youtube"></i></a>
+                    <a href="#" className='footer-icons' target='_blank'><i className="fab fa-linkedin"></i></a>
                 </div>
             </div>
         </div>

@@ -95,7 +95,7 @@
 
 .post-desc-modal .ant-modal-content .ant-modal-body .container .right .right-top-container {
   width: 100%;
-  overflow-y: auto;
+  /* overflow-y: auto; */
 }
 
 .post-desc-modal .ant-modal-content .ant-modal-body .container .right .right-top-container .main-container {
@@ -314,7 +314,7 @@
   border: 1px solid #d5e0d5;
   border-left: none;
   border-right: none;
-  overflow-y: auto;
+  /* overflow-y: auto; */
 }
 
 .tags-card {
@@ -341,9 +341,12 @@
   font-size: 16px;
   color: rgb(63 63 70);
   padding-inline-start: 12px;
-  padding-block-start: 120px;
+  padding-block-start: 10px;
+  margin-top: 0;
   margin-bottom: 0px;
   padding-bottom: 1rem;
+  overflow-y: auto;
+
 }
 
 .tags-item {

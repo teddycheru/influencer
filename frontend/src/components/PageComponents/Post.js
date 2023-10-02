@@ -106,7 +106,7 @@ const Post = ({ data, tabName }) => {
                     post: data?._id,
                     react:
                       data?.likes?.filter((likedData) => likedData._id === data?.user._id).length >
-                      0
+                        0
                         ? false
                         : true,
                   }),

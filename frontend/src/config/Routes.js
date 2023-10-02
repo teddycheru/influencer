@@ -6,6 +6,7 @@ import Home from '../pages/Home'
 import CreatePostPage from '../pages/CreatePostPage'
 import Settings from '../pages/Settings'
 import Account from '../pages/Account'
+import Notifications from '../pages/Notifications'
 import PrivacyPolicy from '../pages/LandingPageCom/PrivacyPolicyPage'
 import TermsOfUse from '../pages/LandingPageCom/TermsOfUse'
 import AboutUs from '../pages/LandingPageCom/AboutUs'
@@ -26,6 +27,7 @@ const Routers = () => {
           <Route path='/create-post' element={<CreatePostPage />} />
           <Route path='/account-details' element={<Account />} />
           <Route path='/setting' element={<Settings />} />
+          <Route path='/notifications' element={<Notifications />} />
           <Route path="/change-password" element={<PasswordUpdatePage />} />
         </Route>
         <Route path='/' element={<MyLanding />} />

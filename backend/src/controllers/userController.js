@@ -9,19 +9,19 @@ const updateProfile = async (req, res) => {
   // #swagger.tags = ['user']
   // #swagger.description = 'Update user profile'
   try {
-    const { name, bio, businessLink, blockAds } = req.body;
+    const { username, bio, businessLink, blockAds } = req.body;
     const updated = await User.findByIdAndUpdate(req.user._id, {
       $set:
         req.awsImages?.length > 0
           ? {
-            name,
+            username,
             profileImage: req.awsImages?.[0],
             bio,
             businessLink,
             blockAds,
           }
           : {
-            name,
+            username,
             bio,
             businessLink,
             blockAds,
@@ -151,8 +151,6 @@ const updatePasswordd = async (req, res) => {
 
   try {
     const { currentPassword, newPassword } = req.body;
-    console.log(currentPassword)
-    console.log(newPassword)
     if (
       password.length < 6
 

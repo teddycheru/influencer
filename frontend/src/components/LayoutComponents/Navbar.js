@@ -21,7 +21,7 @@ const Navbar = () => {
       key: '1',
     },
     {
-      label: <div>Notifications</div>,
+      label: <div onClick={() => navigate('/notifications')}>Notifications</div>,
       key: '2',
     },
     {
@@ -74,7 +74,7 @@ const Navbar = () => {
         </Dropdown>
         <i className="fa-solid fa-caret-down"></i>
       </div>
-    </div >
+    </div>
   )
 }
 
