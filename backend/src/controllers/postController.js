@@ -248,7 +248,7 @@ const fetchPosts = async (req, res) => {
       const expirationDate = post.plan;
       if (currentDate >= expirationDate) {
         post.expired = true;
-        // post.isActive = false
+        post.isActive = false
         await post.save();
       }
     }
